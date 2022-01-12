@@ -12,6 +12,7 @@ interface IColors {
 	primary: string;
 	secondary: string;
 	yellow: string;
+	border: string;
 }
 
 interface IFontSize {
@@ -35,6 +36,7 @@ const blackColor: string = '#000'
 const priamryColor: string = '#262626'
 const secondaryColor = '#409581'
 const yellowColor = '#f7a80b'
+const borderColor = '#0000001f'
 
 
 
@@ -58,6 +60,7 @@ export const theme: ITheme = {
 		primary: priamryColor,
 		secondary: secondaryColor,
 		yellow: yellowColor,
+		border: borderColor,
 	},
 	fontSize,
 }
