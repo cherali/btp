@@ -51,6 +51,7 @@ export const MainStyle = createGlobalStyle`
   }
 
   body {
+    direction: ltr;
     overflow-x: hidden;
     box-sizing: border-box;
   }
