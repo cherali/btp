@@ -11,7 +11,7 @@ const Card: FC<ICardProps> = ({ children, title }) => {
         <CardTitle>{title}</CardTitle>
       </CardHeader>
 
-      <CardBody>
+      <CardBody className='-card-body'>
         {children}
       </CardBody>
 
