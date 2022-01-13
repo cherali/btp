@@ -1,0 +1,2 @@
+export const GET_POST_LIST_SUCCESS: string = 'GET_POST_LIST_SUCCESS'
+export const GET_POST_LIST_FAILED: string = 'GET_POST_LIST_FAILED'

@@ -1,10 +1,12 @@
-import React from 'react'
+import PostSection from './PostSection'
+import { HomeContainer } from './Home.style'
+
 
 function Home() {
   return (
-    <div>
-      home page
-    </div>
+    <HomeContainer>
+      <PostSection />
+    </HomeContainer>
   )
 }
 
