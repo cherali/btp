@@ -16,11 +16,25 @@ interface ApiErrorObject {
   data: any;
 }
 
-export interface ApiResponse {
+interface ApiResponse {
   error: ApiErrorObject | undefined;
   type: string;
   result: any;
 }
+
+export class ApiError extends Error {
+  public error: ApiErrorObject | undefined;
+  public type: string;
+  public result: any;
+
+  constructor(errorObject: ApiResponse) {
+    super();
+    this.error = errorObject.error;
+    this.type = errorObject.type;
+    this.result = errorObject.result
+  }
+}
+
 
 
 const CancelToken = axios.CancelToken
@@ -33,6 +47,8 @@ async function NetworkApi({ method, url, successType, failType, bodyParams, head
     'accept': 'application/json',
     'Content-Type': 'application/json',
   }
+
+  cancelable && cancel && cancel()
 
   return await axios({
     method: method,
@@ -54,7 +70,7 @@ async function NetworkApi({ method, url, successType, failType, bodyParams, head
         data: error.response.data
       }
 
-      throw ({ error: errorObject, type: failType, result: undefined } as ApiResponse)
+      throw new ApiError({ error: errorObject, type: failType, result: undefined })
     })
 }
 

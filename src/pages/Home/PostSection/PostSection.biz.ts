@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { getPosts } from 'redux/actions/postAction';
 import { useDispatcher } from 'hooks/useDispatcher';
-import { ApiResponse } from 'common/utils/NetworkApi';
+import { ApiError } from 'common/utils/NetworkApi';
 
 export const usePostSection = () => {
   const posts: IPost[] = useSelector(s => s.post.posts)
@@ -14,7 +14,7 @@ export const usePostSection = () => {
     onSuccess: (data) => {
       dispatcher('success', data.result, data.type)
     },
-    onError: (error: ApiResponse) => {
+    onError: (error: ApiError) => {
       // TODO: add alert message
 
       dispatcher('failed', undefined, error.type)
