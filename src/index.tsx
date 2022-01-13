@@ -8,6 +8,7 @@ import { MainStyle } from 'common/styles/MainStyles'
 import { theme } from 'common/styles/theme'
 import { configureStore } from 'redux/configStore'
 import ApiProvider from 'providers/api'
+import MessageProvider from 'providers/message'
 
 const { store } = configureStore()
 
@@ -16,8 +17,10 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <ApiProvider>
-          <MainStyle />
-          <App />
+          <MessageProvider>
+            <MainStyle />
+            <App />
+          </MessageProvider>
         </ApiProvider>
       </Provider>
     </ThemeProvider>
