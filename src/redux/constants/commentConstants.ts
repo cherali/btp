@@ -1,3 +1,7 @@
+// local
+export const GET_SUGGESTION_LIST: string = 'GET_SUGGESTION_LIST'
+export const CLEAR_SUGGESTION_LIST: string = 'CLEAR_SUGGESTION_LIST'
+
 // api
 export const GET_COMMENT_OF_POST_SUCCESS: string = 'GET_COMMENT_OF_POST_SUCCESS'
 export const GET_COMMENT_OF_POST_FAILED: string = 'GET_COMMENT_OF_POST_FAILED'

@@ -37,3 +37,30 @@ export const SendButton = styled.button`
     background-color: ${p => p.theme.colors.border};
   }
 `
+
+export const SuggestionContainer = styled.div`
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  height: 150px;
+  top: calc(100% - 10px);
+  background-color: ${p => p.theme.colors.white};
+  z-index: 1000;
+  border: 1px solid ${p =>p.theme.colors.border};
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+`
+
+export const SuggestionItem = styled.p`
+  width: 100%;
+  padding: 8px 10px;
+`
+
+export const NoTag = styled.p`
+  padding: 8px 0;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: bolder;
+`

@@ -6,11 +6,24 @@ import CommentCard from 'components/CommentCard'
 
 import { ICommentSectionProps } from './index.d'
 import { useCommentSection } from './CommentSection.biz'
-import { AddCommentContainer, AddCommentInput, CommentSectionContainer, SendButton } from './CommentSection.style'
+import { AddCommentContainer, AddCommentInput, CommentSectionContainer, NoTag, SendButton, SuggestionContainer, SuggestionItem } from './CommentSection.style'
 
 
 const CommentSection: FC<ICommentSectionProps> = () => {
-  const { postId, isLoading, comments, handeChangeCommentText, onSendComment, addCommentLoading, isCommentValid } = useCommentSection()
+  const {
+    postId,
+    isLoading,
+    comments,
+    handeChangeCommentText,
+    text,
+    onSendComment,
+    addCommentLoading,
+    isCommentValid,
+    showSuggestion,
+    suggestions,
+    handleClickTag,
+    inputRef,
+  } = useCommentSection()
 
 
   return (
@@ -18,15 +31,28 @@ const CommentSection: FC<ICommentSectionProps> = () => {
       <Card
         title='Comments'
         footer={
-          <AddCommentContainer onSubmit={(event) => event.preventDefault()}>
-            <AddCommentInput
-              onChange={handeChangeCommentText}
-              autoCapitalize='false'
-              autoCorrect='false'
-              disabled={!postId}
-            />
-            <SendButton disabled={!postId || addCommentLoading || !isCommentValid} onClick={onSendComment}>send</SendButton>
-          </AddCommentContainer>
+          <>
+            <AddCommentContainer onSubmit={(event) => event.preventDefault()}>
+              <AddCommentInput
+                value={text}
+                onChange={handeChangeCommentText}
+                autoCapitalize='false'
+                autoCorrect='false'
+                disabled={!postId}
+                ref={inputRef}
+              />
+              <SendButton disabled={!postId || addCommentLoading || !isCommentValid} onClick={onSendComment}>send</SendButton>
+            </AddCommentContainer>
+            {showSuggestion && <SuggestionContainer>
+              {!suggestions && <Spinner size='small' />}
+
+              {suggestions?.map((item: string) => (
+                <SuggestionItem key={item} onClick={handleClickTag(item)}>{item}</SuggestionItem>
+              ))}
+
+              {suggestions?.length === 0 && <NoTag>No Tag</NoTag>}
+            </SuggestionContainer>}
+          </>
         }
       >
         {!postId && <p>Select an Post to see Comments</p>}
