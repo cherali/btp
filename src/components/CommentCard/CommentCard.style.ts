@@ -1,13 +1,6 @@
 import styled from 'styled-components'
 
 export const CommentCardContainer = styled.div`
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
-`
-
-export const CommentCardContent = styled.div`
   border-radius: 8px;
   box-shadow: ${() => `rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px`};
   padding: 8px 16px;
@@ -27,13 +20,4 @@ export const CommentCardBody = styled.span`
   font-size: 0.875rem;
   line-height: 1rem;
   text-indent: 16px;
-`
-
-export const IndexText = styled.p`
-  background-color: ${p => p.theme.colors.secondary};
-  color: ${p => p.theme.colors.white};
-  font-weight: bolder;
-  padding: 6px 10px;
-  border-radius: 50%;
-  text-align: center;
 `

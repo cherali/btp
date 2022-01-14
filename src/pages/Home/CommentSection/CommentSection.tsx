@@ -15,7 +15,7 @@ const CommentSection: FC<ICommentSectionProps> = () => {
 
   return (
     <CommentSectionContainer>
-      <Card title={postId ? `Comments for post ${postId}` : ''}>
+      <Card title='Comments'>
 
         {!postId && <p>Select an Post to see Comments</p>}
 
@@ -23,8 +23,8 @@ const CommentSection: FC<ICommentSectionProps> = () => {
 
         {isLoading && <Spinner size='small' />}
         {!isLoading &&
-          comments?.map((comment, i) => (
-            <CommentCard key={comment.id} comment={comment} index={i} />
+          comments?.map(comment => (
+            <CommentCard key={comment.id} comment={comment} />
           ))
         }
       </Card>
