@@ -3,7 +3,7 @@ import { ICardProps } from './index.d'
 import { CardBody, CardContainer, CardHeader, CardTitle } from './Card.style'
 
 
-const Card: FC<ICardProps> = ({ children, title, action }) => {
+const Card: FC<ICardProps> = ({ children, title, action, footer }) => {
   return (
     <CardContainer>
 
@@ -15,6 +15,8 @@ const Card: FC<ICardProps> = ({ children, title, action }) => {
       <CardBody className='-card-body'>
         {children}
       </CardBody>
+
+      {footer}
 
     </CardContainer>
   )

@@ -4,4 +4,5 @@ export interface ICardProps {
   children?: ReactNode;
   title?: string;
   action?: ReactNode;
+  footer?: ReactNode;
 }
