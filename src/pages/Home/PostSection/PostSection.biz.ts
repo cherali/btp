@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { IPost } from 'models/Post';
 import { useQuery } from 'react-query';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,6 +11,8 @@ import { ApiError } from 'common/utils/NetworkApi';
 export const usePostSection = () => {
   const posts: IPost[] = useSelector(s => s.post.posts)
   const selectedPostId = useSelector(s => s.post.selectedPostId)
+
+  const [filter, setFilter] = useState<string>('')
 
   const dispatcher = useDispatcher()
   const dispatch = useDispatch()
@@ -32,10 +35,17 @@ export const usePostSection = () => {
     }
   }
 
+  const handleFilterPost = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFilter(event.target.value)
+  }
+
+  const filteredPost = filter.trim() === '' ? posts : posts.filter(r => (r.title as string).indexOf(filter) > -1 ? r : null);
+
   return {
     isLoading,
-    posts,
+    posts: filteredPost,
     handleClickPost,
     selectedPostId,
+    handleFilterPost,
   }
 }

@@ -7,11 +7,14 @@ export const CardContainer = styled.div`
 
 export const CardHeader = styled.div`
   border-bottom: 1px solid ${p => p.theme.colors.border};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
 `
 
 export const CardTitle = styled.p`
   font-size: 1.225rem;
-  padding: 1rem 1.5rem;
   font-weight: bolder;
 `
 

@@ -10,13 +10,23 @@ import { PostSectionContainer } from './PostSection.style'
 
 
 const PostSection: FC<IPostSectionProps> = () => {
-  const { isLoading, posts, handleClickPost, selectedPostId } = usePostSection()
+  const { isLoading, posts, handleClickPost, selectedPostId, handleFilterPost } = usePostSection()
 
 
   return (
     <PostSectionContainer>
-      <Card title='Posts'>
+      <Card
+        title={`Posts ${posts.length}`}
+        action={
+          <input
+            onChange={handleFilterPost}
+          />
+        }
+      >
         {isLoading && <Spinner size='small' />}
+
+        {!isLoading && posts.length === 0 && <p>No Post</p>}
+
         {
           posts?.map(post => (
             <PostCard key={post.id} post={post} onClick={handleClickPost} isActive={post.id === selectedPostId} />
