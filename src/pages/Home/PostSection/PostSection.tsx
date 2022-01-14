@@ -16,7 +16,7 @@ const PostSection: FC<IPostSectionProps> = () => {
   return (
     <PostSectionContainer>
       <Card
-        title={`Posts ${posts.length}`}
+        title={`Posts ${posts?.length || ''}`}
         action={
           <input
             onChange={handleFilterPost}
