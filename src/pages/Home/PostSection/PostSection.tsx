@@ -10,7 +10,7 @@ import { PostSectionContainer } from './PostSection.style'
 
 
 const PostSection: FC<IPostSectionProps> = () => {
-  const { isLoading, posts, handleClickPost } = usePostSection()
+  const { isLoading, posts, handleClickPost, selectedPostId } = usePostSection()
 
 
   return (
@@ -19,7 +19,7 @@ const PostSection: FC<IPostSectionProps> = () => {
         {isLoading && <Spinner size='small' />}
         {
           posts?.map(post => (
-            <PostCard key={post.id} post={post} onClick={handleClickPost} />
+            <PostCard key={post.id} post={post} onClick={handleClickPost} isActive={post.id === selectedPostId} />
           ))
         }
       </Card>

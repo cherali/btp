@@ -9,6 +9,8 @@ import { ApiError } from 'common/utils/NetworkApi';
 
 export const usePostSection = () => {
   const posts: IPost[] = useSelector(s => s.post.posts)
+  const selectedPostId = useSelector(s => s.post.selectedPostId)
+
   const dispatcher = useDispatcher()
   const dispatch = useDispatch()
 
@@ -34,5 +36,6 @@ export const usePostSection = () => {
     isLoading,
     posts,
     handleClickPost,
+    selectedPostId,
   }
 }
