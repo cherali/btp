@@ -45,6 +45,9 @@ export const useCommentSection = () => {
 
       toast.success('new comment added', defaultOption)
 
+      // clear text
+      setText('')
+
       fetchComment()
     },
     onError: (error: ApiError) => {
